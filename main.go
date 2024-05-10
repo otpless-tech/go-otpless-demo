@@ -43,6 +43,18 @@ func main() {
 		VerifyAuthToken(c, globalConfig)
 	})
 
+	router.POST("/send-otp", func(c *gin.Context) {
+		SendOTP(c, globalConfig)
+	})
+
+	router.POST("/re-send-otp", func(c *gin.Context) {
+		ReSendOTP(c, globalConfig)
+	})
+
+	router.POST("/verify-otp", func(c *gin.Context) {
+		ReSendOTP(c, globalConfig)
+	})
+
 	_ = router.Run(":9098")
 }
 

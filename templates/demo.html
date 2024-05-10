@@ -67,6 +67,14 @@
            onclick="showContainer('verifyCodeContainer')"> Verify Code<br>
     <input type="radio" id="verifyAuthToken" name="choice" value="verifyAuthToken"
            onclick="showContainer('verifyAuthToekn')"> Verify Auth Token<br><br>
+
+    <input type="radio" id="sendOTP" name="choice" value="sendOTP"
+           onclick="showContainer('sendOTPContainer')"> Send OTP<br><br>
+    <input type="radio" id="reSendOTP" name="choice" value="reSendOTP"
+           onclick="showContainer('reSendOTPContainer')"> Re-send OTP<br><br>
+    <input type="radio" id="verifyOTP" name="choice" value="verifyOTP"
+           onclick="showContainer('verifyOTPContainer')"> Verify OTP<br><br>
+
     <div id="generateMagicLinkContainer" class="hidden">
         <hr>
         <form action="/generate-magic-link" method="post">
@@ -90,6 +98,36 @@
         <form action="/verify-auth-token" method="post">
             <label for="authToken">Enter Auth Token:</label><br>
             <input type="text" id="authToken" name="authToken" placeholder="Enter auth token"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div id="sendOTPContainer" class="hidden">
+        <hr>
+        <form action="/send-otp" method="post">
+            <label for="sendOTP">Enter Any of One:</label><br>
+            <input type="text" id="mobile" name="mobile" placeholder="Enter mobile"><br><br>
+            <input type="text" id="email" name="email" placeholder="Enter email optional"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div id="reSendOTPContainer" class="hidden">
+        <hr>
+        <form action="/re-send-otp" method="post">
+            <label for="reSendOTP">Enter Order-Id:</label><br>
+            <input type="text" id="order_id" name="order_id" placeholder="Enter order-id"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div id="verifyOTPContainer" class="hidden">
+        <hr>
+        <form action="/verify-otp" method="post">
+            <label for="verifyOTP">Enter Details:</label><br>
+            <input type="text" id="orderID" name="orderID" placeholder="Enter order-id"><br><br>
+            <input type="text" id="otp" name="otp" placeholder="Enter otp"><br><br>
+            <input type="text" id="email" name="email" placeholder="Enter email optional"><br><br>
+            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Enter phoneNumber"><br><br>
             <input type="submit" value="Submit">
         </form>
     </div>
