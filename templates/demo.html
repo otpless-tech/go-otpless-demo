@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>OTP-Less Go Demo</h1>
+    <hr>
+
+    <input type="radio" id="generateMagicLink" name="choice" value="generateMagicLink"
+           onclick="showContainer('generateMagicLinkContainer')"> Generate Magic Link<br>
+    <input type="radio" id="verifyCode" name="choice" value="verifyCode"
+           onclick="showContainer('verifyCodeContainer')"> Verify Code<br>
+    <input type="radio" id="generateOTP" name="choice" value="generateOTP"
+           onclick="showContainer('generateOTPContainer')"> Generate OTP<br><br>
+    <div id="generateMagicLinkContainer" class="hidden">
+        <hr>
+        <form action="/generate-magic-link" method="post">
+            <label for="mobileNumber">Mobile Number:</label><br>
+            <input type="text" id="mobileNumber" name="mobileNumber" placeholder="Enter your mobile number"><br><br>
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" name="email" placeholder="Enter your email"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div id="verifyCodeContainer" class="hidden">
+        <hr>
+        <form action="/verify-code" method="post">
+            <label for="code">Enter Code:</label><br>
+            <input type="text" id="code" name="code" placeholder="Enter code"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div id="generateOTPContainer" class="hidden">
+
+    </div>
+</div>
+
+<script>
+    function showContainer(containerId) {
+        // Hide all containers
+        document.querySelectorAll('.container div').forEach(function (container) {
+            container.classList.add('hidden');
+        });
+
+        // Show the selected container
+        document.getElementById(containerId).classList.remove('hidden');
+    }
+</script>
+</body>
+</html>
