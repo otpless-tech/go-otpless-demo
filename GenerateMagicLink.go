@@ -15,12 +15,14 @@ func GenerateMagicLink(c *gin.Context, config Config) {
 
 	result, err := otplessAuthSdk.GenerateMagicLink(mobileNumber, email, config.ClientID, config.ClientSecret, redirectUri, channel)
 	fmt.Printf("Result: for [%s] %v , error : %v\n", mobileNumber, result, err)
-	if err != nil {
-		c.JSON(http.StatusOK, gin.H{
-			"message": err,
-		})
-	}
 
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": result,
+			"error":   err.Error(), // Convert error to string
+		})
+		return
+	}
 	c.JSON(http.StatusOK, gin.H{
 		"message": result,
 	})
