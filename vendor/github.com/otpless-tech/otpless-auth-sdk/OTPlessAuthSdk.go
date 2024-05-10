@@ -136,24 +136,22 @@ func VerifyAuthToken(token, clientID, clientSecret string) (*UserDetailResult, e
 		Success:  true,
 		AuthTime: authTime,
 	}
-	// Check if the "phone_number" field is present before accessing it
+	userDetail.Email = ""
+	userDetail.Name = ""
+	userDetail.PhoneNumber = ""
+
 	if phoneNumber, ok := decoded["phone_number"].(string); ok {
 		userDetail.PhoneNumber = phoneNumber
 	}
-
-	// Check if the "email" field is present before accessing it
 	if email, ok := decoded["email"].(string); ok {
 		userDetail.Email = email
 	}
-
-	userDetail.Name = decoded["name"].(string)
-
-	// Check if the "country_code" field is present before accessing it
+	if name, ok := decoded["name"].(string); ok {
+		userDetail.Name = name
+	}
 	if countryCode, ok := decoded["country_code"].(string); ok {
 		userDetail.CountryCode = countryCode
 	}
-
-	// Check if the "national_phone_number" field is present before accessing it
 	if nationalPhoneNumber, ok := decoded["national_phone_number"].(string); ok {
 		userDetail.NationalPhoneNumber = nationalPhoneNumber
 	}

@@ -65,8 +65,8 @@
            onclick="showContainer('generateMagicLinkContainer')"> Generate Magic Link<br>
     <input type="radio" id="verifyCode" name="choice" value="verifyCode"
            onclick="showContainer('verifyCodeContainer')"> Verify Code<br>
-    <input type="radio" id="generateOTP" name="choice" value="generateOTP"
-           onclick="showContainer('generateOTPContainer')"> Generate OTP<br><br>
+    <input type="radio" id="verifyAuthToken" name="choice" value="verifyAuthToken"
+           onclick="showContainer('verifyAuthToekn')"> Verify Auth Token<br><br>
     <div id="generateMagicLinkContainer" class="hidden">
         <hr>
         <form action="/generate-magic-link" method="post">
@@ -85,8 +85,13 @@
             <input type="submit" value="Submit">
         </form>
     </div>
-    <div id="generateOTPContainer" class="hidden">
-
+    <div id="verifyAuthToekn" class="hidden">
+        <hr>
+        <form action="/verify-auth-token" method="post">
+            <label for="authToken">Enter Auth Token:</label><br>
+            <input type="text" id="authToken" name="authToken" placeholder="Enter auth token"><br><br>
+            <input type="submit" value="Submit">
+        </form>
     </div>
 </div>
 

@@ -39,6 +39,10 @@ func main() {
 		VerifyCode(c, globalConfig)
 	})
 
+	router.POST("/verify-auth-token", func(c *gin.Context) {
+		VerifyAuthToken(c, globalConfig)
+	})
+
 	_ = router.Run(":9098")
 }
 
