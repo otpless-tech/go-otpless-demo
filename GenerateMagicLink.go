@@ -10,7 +10,7 @@ import (
 func GenerateMagicLink(c *gin.Context, config Config) {
 	mobileNumber := c.PostForm("mobileNumber")
 	email := c.PostForm("email")
-	redirectUri := "https://google.com"
+	redirectUri := "http://localhost"
 	channel := "WHATSAPP" //SMS,EMAIL
 
 	result, err := otplessAuthSdk.GenerateMagicLink(mobileNumber, email, config.ClientID, config.ClientSecret, redirectUri, channel)
